@@ -1,3 +1,4 @@
+/*COMMON*/
 * {
     margin: 0;
     padding: 0;
@@ -5,49 +6,53 @@
 }
 
 .container {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.item {
+/*
+##########################
+DESCRIPTION ON LANGR IMAGE
+##########################
+*/
+.titleGame {
     float: left;
-    width: 700px;
-    height: 300px;
+    width: 800px;
+    height: 500px;
     position: relative;
 }
 
-.item img {
+.titleGame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.item .text {
+.titleGame .description {
     position: absolute;
     right: 20px;
     bottom: 20px;
     text-align: right;
     color: white;
+    font-weight: bold;
 }
 
-.thumbnail s {
-    float: left;
+/*SHORT IMAGE*/
+.thumbnails {
+    float: right;
     height: 300px;
-    background: #000;
-    position: relative;
 }
 
 .thumb {
-    height: 75px;
-    opacity: 0.5;
+    height: 100px;
+    opacity: 0.6;
 }
 
 .thumb img {
-    width: 20%;
+    width: 150px;
+    height: 100px;
     object-fit: cover;
-    overflow-x: hidden;
 }
 
 .thumb.active {
@@ -55,54 +60,60 @@
     opacity: 1;
 }
 
-.prev, .next {
-    width: 20px;
-    height: 20px;
-    margin: 10px 0;
-    border-radius: 50%;
-    background: #ccc;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    cursor: pointer;
-    z-index: 999;
-}
-
-.next {
-    bottom: 0;
-}
-
-p{
-    color: #000;
-}
 /*
-EXTRA: in questo esempio gli accordion vengono creati
-usando 2 bordi di un quadratino ruotato di 45 gradi
-In una versione base si possono usare delle icone
-oppure i caratteri ∧ (&and;) e ∨ (&or;)
- */
-.prev::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
+##########################
+BEFORE AFTER
+##########################
+*/
+.prevGame, .nextGame {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
     position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(-45deg);
+    right: 26.5%;
+    cursor: pointer;
+    z-index: 1000;
 }
 
-.next::before {
+.prevGame{
+    margin: 10px 0;
+}
+.nextGame {
+    margin: 460px 0;
+}
+
+/*
+##########################
+BONUS
+##########################
+ */
+.nextGame::before, .prevGame::after{
     content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
     display: block;
     position: absolute;
-    bottom: 35%;
     left: 50%;
+}
+
+.prevGame::after {
+    transform: translate(-50%) rotate(315deg);
+    margin-top: 8px;
+}
+
+.nextGame::before {
     transform: translate(-50%) rotate(135deg);
+    margin-top: 8px;
+}
+
+h1{
+    text-align: center;
+    color: rgb(255, 51, 0);
+    margin: 20px 0;
+}
+i{
+    color: black;
 }
