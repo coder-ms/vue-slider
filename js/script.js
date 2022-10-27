@@ -1,7 +1,24 @@
+
+/*
+Descrizione:
+Partendo dal markup base fornito, fare uno slider usando Vue.
+
+Bonus:
+1- al click su una thumb, visualizzare in grande l'immagine corrispondente
+2- applicare l'autoplay allo slider: ogni 2 secondi, cambia immagine automaticamente
+3- quando il mouse va in hover sullo slider, bloccare l'autoplay e farlo riprendere quando esce
+*/
+
+
+
+
+
+
+/*
 const slides = [
 {
     image: 'img/01.webp',
-        title: 'Marvel\'s Spiderman Miles Morale',
+        title: 'Marvel\'s Spiderman Miles Morales',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     }, 
     {
@@ -27,3 +44,60 @@ const slides = [
 ];
 
 console.log(slides);
+*/
+
+
+// Create app
+console.log(Vue);
+const { createApp } = Vue;
+
+
+createApp({
+    data(){
+        return {
+            activeIndex:0,
+            videoGames:{
+                title1: 'Spiderman Miles Morales',
+                title2: 'Ratchet & Clank: Rift Apart',
+                title3: 'Fortnite',
+                title4: 'Stray',
+                title5: "Marvel's Avengers",
+                images: [
+                    'img/01.webp',
+                    'img/02.webp',
+                    'img/03.webp',
+                    'img/04.webp',
+                    'img/05.webp'
+                ],
+            }
+        }
+    },
+    //
+    methods:{
+        // videogioco precedente
+        prevGame(){
+            this.activeIndex--
+            if(this.activeIndex < 0){
+                this.activeIndex = this.videoGames.images.length - 1;
+            }
+        },
+        // videogioco successivo
+        nextGame(){
+            this.activeIndex++
+            if(this.activeIndex > this.videoGames.images.length - 1){
+                this.activeIndex = 0;
+            }
+        },
+        // scroll con intervallo di 7000ms
+        autoScollGames(){
+            this.autoscroll = setInterval(() =>{
+                this.nextGame();
+            }, 7000)
+        },
+        //stop scroll
+        stopAutoScollGames(){
+            clearInterval(this.autoscroll);
+            this.autoscroll = null;
+        },
+    }
+}).mount('#app');
